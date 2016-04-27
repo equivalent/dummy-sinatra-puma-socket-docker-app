@@ -1,10 +1,10 @@
-# Dummy Puma Sinatra Docker app. runnig on a socket
+# Dummy Puma Sinatra Docker app. running on a socket
 
 Given your NginX server is expecting connection on unix socket `unix:///var/shared/app.sock`
-This docker image recipie will run small [Sinatra](http://www.sinatrarb.com/)
+This docker image recipe will run small [Sinatra](http://www.sinatrarb.com/)
 dummy application that will run [Puma server](http://puma.io/) on this socket.
 
-for example:
+For example:
 
 ```
 /etc/nginx/nginx.conf
@@ -15,20 +15,18 @@ upstream myapp {
 # ...
 ```
 
-## Plain Ruby
+## Running as Ruby without Docker
 
-to lunch server
+To lunch server
 
 ```
+git clone git@github.com:equivalent/dummy-puma-sinatra-docker-app
+cd ./test-puma-app
 bundle install
 bundle exec puma config.ru -C puma.rb
 ```
 
-## Docker 
-
-
-#### step 1 - lunch server
-
+## Run as Docker image
 
 ```bash
 git clone git@github.com:equivalent/dummy-puma-sinatra-docker-app
@@ -47,7 +45,7 @@ docker ps
 
 Now you have a puma running on a socket `/tmp/dummy-puma-sinatra-docker-app/app.sock`
 
-#### step - lunch NginX
+## step 2 - Lunch NginX
 
 Create / Lunch NginX that is expecting connection on socket `/tmp/dummy-puma-sinatra-docker-app/app.sock`
 
@@ -84,7 +82,6 @@ server {
 }
 ```
 
-
 ```
 cd ./your-nginx-docker-project
 docker build -t=testnginx .
@@ -92,3 +89,11 @@ docker run -v /tmp/dummy-puma-sinatra-docker-app/:/var/shared/ -p 80:80 -it test
 ```
 
 > if you are getting 504 you may be running nginx before Puma server
+
+## Notes
+
+* This is a demo app. Be sure to alter any config according to your
+  needs
+* If you want some NginX example check
+  https://gist.github.com/ctalkington/4448153#file-nginx-conf-L4 or
+  https://www.youtube.com/watch?v=jSy1Bnf3WIk
