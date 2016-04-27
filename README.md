@@ -20,8 +20,8 @@ upstream myapp {
 To lunch server
 
 ```
-git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app
-cd ./test-puma-app
+git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app.git
+cd ./dummy-sinatra-puma-socket-docker-app
 bundle install
 bundle exec puma config.ru -C puma.rb
 ```
@@ -29,11 +29,11 @@ bundle exec puma config.ru -C puma.rb
 ## Run as Docker image
 
 ```bash
-git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app
-cd ./test-puma-app
+git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app.git
+cd ./dummy-sinatra-puma-socket-docker-app
 
 # build docker image
-bash docker build -t=dummy-sinatra-puma-socket-docker-app .
+docker build -t=dummy-sinatra-puma-socket-docker-app .
 
 # Prepare and run Docker image
 mkdir -p /tmp/dummy-app
@@ -47,7 +47,7 @@ Now you have a puma running on a socket `/tmp/dummy-app/app.sock`
 
 ## step 2 - Lunch NginX
 
-Create / Lunch NginX that is expecting connection on socket `/tmp/dummy-app/app.sock`
+Create & start NginX that is expecting connection on socket `/tmp/dummy-app/app.sock`
 
 for example:
 
@@ -92,7 +92,7 @@ docker run -v /tmp/dummy-app/:/var/shared/ -p 80:80 -it testnginx
 
 ## Notes
 
-* This is a demo app. Be sure to alter any config according to your
+* This is a demo app. Be sure to fork and alter any config according to your
   needs
 * If you want some NginX example check
   https://gist.github.com/ctalkington/4448153#file-nginx-conf-L4 or
