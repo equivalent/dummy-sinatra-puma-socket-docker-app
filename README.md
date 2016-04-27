@@ -20,7 +20,7 @@ upstream myapp {
 To lunch server
 
 ```
-git clone git@github.com:equivalent/dummy-puma-sinatra-docker-app
+git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app
 cd ./test-puma-app
 bundle install
 bundle exec puma config.ru -C puma.rb
@@ -29,25 +29,25 @@ bundle exec puma config.ru -C puma.rb
 ## Run as Docker image
 
 ```bash
-git clone git@github.com:equivalent/dummy-puma-sinatra-docker-app
+git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app
 cd ./test-puma-app
 
 # build docker image
-bash docker build -t=dummy-puma-sinatra-docker-app .
+bash docker build -t=dummy-sinatra-puma-socket-docker-app .
 
 # Prepare and run Docker image
-mkdir -p /tmp/dummy-puma-sinatra-docker-app
-docker run -v /tmp/dummy-puma-sinatra-docker-app/:/var/shared/ -d dummy-puma-sinatra-docker-app
+mkdir -p /tmp/dummy-app
+docker run -v /tmp/dummy-app/:/var/shared/ -d dummy-sinatra-puma-socket-docker-app
 
 # Check
 docker ps
 ```
 
-Now you have a puma running on a socket `/tmp/dummy-puma-sinatra-docker-app/app.sock`
+Now you have a puma running on a socket `/tmp/dummy-app/app.sock`
 
 ## step 2 - Lunch NginX
 
-Create / Lunch NginX that is expecting connection on socket `/tmp/dummy-puma-sinatra-docker-app/app.sock`
+Create / Lunch NginX that is expecting connection on socket `/tmp/dummy-app/app.sock`
 
 for example:
 
@@ -55,7 +55,7 @@ for example:
 /etc/nginx/nginx.conf
 # ...
 upstream myapp {
-  server unix:///tmp/dummy-puma-sinatra-docker-app/app.sock;
+  server unix:///tmp/dummy-app/app.sock;
 }
 # ...
 ```
@@ -85,7 +85,7 @@ server {
 ```
 cd ./your-nginx-docker-project
 docker build -t=testnginx .
-docker run -v /tmp/dummy-puma-sinatra-docker-app/:/var/shared/ -p 80:80 -it testnginx
+docker run -v /tmp/dummy-app/:/var/shared/ -p 80:80 -it testnginx
 ```
 
 > if you are getting 504 you may be running nginx before Puma server
