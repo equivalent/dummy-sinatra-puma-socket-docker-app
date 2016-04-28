@@ -45,7 +45,7 @@ docker ps
 
 Now you have a puma running on a socket `/tmp/dummy-app/app.sock`
 
-## step 2 - Lunch NginX
+## step 2 - Launch NginX
 
 Create & start NginX that is expecting connection on socket `/tmp/dummy-app/app.sock`
 
