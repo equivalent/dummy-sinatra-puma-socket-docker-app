@@ -17,7 +17,7 @@ upstream myapp {
 
 ## Running as Ruby without Docker
 
-To lunch server
+To launch server
 
 ```
 git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app.git
