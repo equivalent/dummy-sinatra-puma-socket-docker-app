@@ -1,5 +1,7 @@
 # Dummy Puma Sinatra Docker app. running on a socket
 
+[Docker image](https://hub.docker.com/r/equivalent/dummy-sinatra-puma-socket-docker-app/)
+
 Given your NginX server is expecting connection on unix socket `unix:///var/shared/app.sock`
 This docker image recipe will run small [Sinatra](http://www.sinatrarb.com/)
 dummy application that will run [Puma server](http://puma.io/) on this socket.
