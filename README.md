@@ -19,7 +19,7 @@ upstream myapp {
 
 ## Step 1 - Run Puma
 
-### Run as Docker Image
+### option 1 - Run as Docker Image
 
 ```bash
 docker pull equivalent/dummy-sinatra-puma-socket-docker-app
@@ -32,9 +32,9 @@ docker run -v /tmp/dummy-app/:/var/shared/ -d equivalent/dummy-sinatra-puma-sock
 docker ps
 ```
 
-Now you have a puma running on a socket `/tmp/dummy-app/app.sock`
+Now you have a Puma running on a socket `/tmp/dummy-app/app.sock`
 
-### Build Docker image locally run your Docker image
+### option 2 - Build Docker image locally and run Docker image
 
 ```bash
 git clone git@github.com:equivalent/dummy-sinatra-puma-socket-docker-app.git
@@ -51,7 +51,7 @@ docker run -v /tmp/dummy-app/:/var/shared/ -d dummy-sinatra-puma-socket-docker-a
 docker ps
 ```
 
-### Running as Ruby without Docker
+### option 3 - Running as Ruby without Docker
 
 To launch server
 
