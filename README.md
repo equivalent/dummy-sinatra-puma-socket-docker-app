@@ -1,5 +1,7 @@
 # Dummy Puma Sinatra Docker app. running on a socket
 
+[![Open Thanks](https://thawing-falls-79026.herokuapp.com/images/thanks-1.svg)](https://thawing-falls-79026.herokuapp.com/r/emrbpnuk)
+
 [Docker image](https://hub.docker.com/r/equivalent/dummy-sinatra-puma-socket-docker-app/)
 
 Given your NginX server is expecting connection on unix socket `unix:///var/shared/app.sock`
