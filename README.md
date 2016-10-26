@@ -1,6 +1,7 @@
 # Dummy Puma Sinatra Docker app. running on a socket
 
 [![Open Thanks](https://thawing-falls-79026.herokuapp.com/images/thanks-1.svg)](https://thawing-falls-79026.herokuapp.com/r/emrbpnuk)
+![Gittens](http://gittens.r15.railsrumble.com//badge/equivalent/dummy-sinatra-puma-socket-docker-app)
 
 [Docker image](https://hub.docker.com/r/equivalent/dummy-sinatra-puma-socket-docker-app/)
 
